@@ -72,7 +72,7 @@ fixes and improvement from the original github or npm repository.
  *
  * When float support is disabled, operations on floats will throw.
  */
-#define MVM_SUPPORT_FLOAT 1
+#define MVM_SUPPORT_FLOAT 0
 
 #if MVM_SUPPORT_FLOAT
 
