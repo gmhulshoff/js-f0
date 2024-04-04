@@ -72,8 +72,7 @@ fixes and improvement from the original github or npm repository.
  *
  * When float support is disabled, operations on floats will throw.
  */
-// set to zero for f0 compilation
-#define MVM_SUPPORT_FLOAT 0
+#define MVM_SUPPORT_FLOAT 1
 
 #if MVM_SUPPORT_FLOAT
 
@@ -204,9 +203,7 @@ fixes and improvement from the original github or npm repository.
  * returning to it. Either way, the VM should NOT be allowed to continue
  * executing after MVM_FATAL_ERROR (control should not return).
  */
-// fatalError is required due to lack of exit() on f0
-extern void fatalError(void* vm, int e);
-#define MVM_FATAL_ERROR(vm, e) fatalError(vm, e)
+#define MVM_FATAL_ERROR(vm, e) (assert(false), exit(e))
 
 /**
  * Set MVM_ALL_ERRORS_FATAL to 1 to have the MVM_FATAL_ERROR handler called
