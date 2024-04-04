@@ -203,7 +203,10 @@ fixes and improvement from the original github or npm repository.
  * returning to it. Either way, the VM should NOT be allowed to continue
  * executing after MVM_FATAL_ERROR (control should not return).
  */
-#define MVM_FATAL_ERROR(vm, e) (assert(false), exit(e))
+// fatalError is required due to lack of exit() on f0
+extern void fatalError(void* vm, int e);
+#define MVM_FATAL_ERROR(vm, e) fatalError(vm, e)
+//#define MVM_FATAL_ERROR(vm, e) (assert(false), exit(e))
 
 /**
  * Set MVM_ALL_ERRORS_FATAL to 1 to have the MVM_FATAL_ERROR handler called
